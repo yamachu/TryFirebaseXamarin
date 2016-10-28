@@ -38,3 +38,6 @@ Thumbs.db
 
 # dotCover
 *.dotCover
+
+# Firebase config file
+GoogleService-Info.plist
