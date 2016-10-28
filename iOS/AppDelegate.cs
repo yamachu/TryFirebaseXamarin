@@ -16,6 +16,17 @@ namespace TryFirebaseXamarin.iOS
 
 			LoadApplication(new App());
 
+			// Firebase component initialize
+			Firebase.Analytics.App.Configure();
+
+			// Generate custom event
+			NSString[] keys = { new NSString("Event_type") };
+			NSObject[] values = { new NSString("App_open") };
+			var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(keys, values, keys.Length);
+
+			// Send custom event
+			Firebase.Analytics.Analytics.LogEvent("CustomEvent", parameters);
+
 			return base.FinishedLaunching(app, options);
 		}
 	}
