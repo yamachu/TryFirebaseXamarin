@@ -41,6 +41,7 @@ namespace TryFirebaseXamarin.iOS
 
 			UIApplication.SharedApplication.RegisterForRemoteNotifications();
 
+			// Firebase component initialize
 			Firebase.Analytics.App.Configure();
 
 			Firebase.InstanceID.InstanceId.Notifications.ObserveTokenRefresh((sender, e) => {
@@ -50,6 +51,8 @@ namespace TryFirebaseXamarin.iOS
 
 				connectFCM();
 			});
+
+
 
 			return base.FinishedLaunching(app, options);
 		}
@@ -79,6 +82,14 @@ namespace TryFirebaseXamarin.iOS
 		public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
 		{
 			Messaging.SharedInstance.AppDidReceiveMessage(userInfo);
+
+			// Generate custom event
+			NSString[] keys = { new NSString("Event_type") };
+			NSObject[] values = { new NSString("Recieve_Notification") };
+			var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(keys, values, keys.Length);
+
+			// Send custom event
+			Firebase.Analytics.Analytics.LogEvent("CustomEvent", parameters);
 
 			if (application.ApplicationState == UIApplicationState.Active) {
 				System.Diagnostics.Debug.WriteLine(userInfo);
