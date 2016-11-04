@@ -17,8 +17,6 @@ namespace TryFirebaseXamarin.Droid
 	[Activity(Label = "TryFirebaseXamarin.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
-		private FirebaseAnalytics firebaseAnalytics;
-
 		protected override void OnCreate(Bundle bundle)
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
@@ -29,7 +27,7 @@ namespace TryFirebaseXamarin.Droid
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
 			// Initialize firebase instance
-			firebaseAnalytics = FirebaseAnalytics.GetInstance(this);
+			FirebaseInstanceManager.Init(this);
 
 			// 不明点
 			// Debugビルドだと以下のようにDeleteInstanceId()を呼んでInstanceIdをリフレッシュしないと再起動後通知が受け取れない
@@ -45,8 +43,7 @@ namespace TryFirebaseXamarin.Droid
 			});
 #else
 			FirebaseMessaging.Instance.SubscribeToTopic("all");
-#endif			    
-			// [END get_token]
+#endif
 
 			LoadApplication(new App());
 		}

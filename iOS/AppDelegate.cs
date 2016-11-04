@@ -83,14 +83,6 @@ namespace TryFirebaseXamarin.iOS
 		{
 			Messaging.SharedInstance.AppDidReceiveMessage(userInfo);
 
-			// Generate custom event
-			NSString[] keys = { new NSString("Event_type") };
-			NSObject[] values = { new NSString("Recieve_Notification") };
-			var parameters = NSDictionary<NSString, NSObject>.FromObjectsAndKeys(keys, values, keys.Length);
-
-			// Send custom event
-			Firebase.Analytics.Analytics.LogEvent("CustomEvent", parameters);
-
 			if (application.ApplicationState == UIApplicationState.Active) {
 				System.Diagnostics.Debug.WriteLine(userInfo);
 				var aps_d = userInfo["aps"] as NSDictionary;

@@ -1,4 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:TryFirebaseXamarin" x:Class="TryFirebaseXamarin.TryFirebaseXamarinPage">
-	<Label Text="Welcome to Xamarin Forms!" VerticalOptions="Center" HorizontalOptions="Center" />
+	<StackLayout>
+		<Button Text="Button_1" Clicked="Handle_Clicked"/>
+		<Button Text="Button_2" Clicked="Handle_Clicked"/>
+		<Button Text="Button_3" Clicked="Handle_Clicked"/>
+	</StackLayout>
 </ContentPage>

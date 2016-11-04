@@ -118,6 +118,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FirebaseMessagingServiceImpl.cs" />
     <Compile Include="Services\FirebaseInstanceIdServiceImpl.cs" />
+    <Compile Include="Managers\FirebaseInstanceManager.cs" />
+    <Compile Include="Services\FirebaseLogEventService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -136,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Managers\" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />
