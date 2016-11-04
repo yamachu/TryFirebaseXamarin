@@ -40,4 +40,5 @@ Thumbs.db
 *.dotCover
 
 # Firebase config file
-GoogleService-Info.plist
+iOS/GoogleService-Info.plist
+Droid/google-services.json
